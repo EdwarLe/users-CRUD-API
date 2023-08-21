@@ -21,7 +21,6 @@ function App() {
     useState(false);
   const [confirmUpdateUser, setConfirmUpdateUser] = useState({});
 
-
   const handleUpdateUser = (user) => {
     setIsShowModalUpdateUser(true);
     setIsUpdateUser(user);
@@ -92,7 +91,7 @@ function App() {
         <section className="flex justify-center items-center bg-light-purple px-1 py-1 text-light-100 gap-[2px]">
           <i className="bx bx-plus"></i>
           <button
-            className="px-2"
+            className="px-2 shadow-lg shadow-light-purple"
             onClick={() => setIsShowModalCreateUser(true)}
           >
             Create new user
@@ -139,68 +138,76 @@ function App() {
         />
       </section>
 
-      {isModalConfirmCreateUser && (
-        <section className="fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4">
-          <ConfirmModalUser
-            image={"/images/check.png"}
-            title={"Succes"}
-            parragraph={"User created successfuly"}
-            footer={"Thanks"}
-            setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
-            setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
-            setIsModalDeleteUser={setIsModalDeleteUser}
-            setIsCreateEmptyError={setIsCreateEmptyError}
-          />
-        </section>
-      )}
+      <section
+        className={`fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4 ${
+          isModalConfirmCreateUser ? "scale-100" : "scale-0"
+        } transition-transform duration-300`}
+      >
+        <ConfirmModalUser
+          image={"/images/check.png"}
+          title={"Success"}
+          parragraph={"This user was created successfully"}
+          footer={"Thanks"}
+          setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
+          setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
+          setIsModalDeleteUser={setIsModalDeleteUser}
+          setIsCreateEmptyError={setIsCreateEmptyError}
+        />
+      </section>
 
-      {isCreateEmptyError && (
-        <section className="fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4">
-          <ConfirmModalUser
-            image={"/images/error.png"}
-            title={"Error"}
-            parragraph={"Please complete all fields"}
-            footer={"Thanks"}
-            setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
-            setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
-            setIsModalDeleteUser={setIsModalDeleteUser}
-            setIsCreateEmptyError={setIsCreateEmptyError}
-          />
-        </section>
-      )}
+      <section
+        className={`fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4 ${
+          isCreateEmptyError ? "scale-100" : "scale-0"
+        } transition-transform duration-300`}
+      >
+        <ConfirmModalUser
+          image={"/images/error.png"}
+          title={"Error"}
+          parragraph={"Please complete all the fields"}
+          footer={"Thanks"}
+          setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
+          setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
+          setIsModalDeleteUser={setIsModalDeleteUser}
+          setIsCreateEmptyError={setIsCreateEmptyError}
+        />
+      </section>
 
-      {isModalDeleteUser && (
-        <section className="fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4">
-          <ConfirmModalUser
-            image={"/images/warning.png"}
-            title={"Warning"}
-            parragraph={"Are you sure do you want to delete this user?"}
-            setIsModalDeleteUser={setIsModalDeleteUser}
-            isModalDeleteUser={isModalDeleteUser}
-            handleDelete={handleDelete}
-            setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
-            setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
-            setIsCreateEmptyError={setIsCreateEmptyError}
-          />
-        </section>
-      )}
+      <section
+        className={`fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4 ${
+          isModalDeleteUser ? "scale-100" : "scale-0"
+        } transition-transform duration-300`}
+      >
+        <ConfirmModalUser
+          image={"/images/warning.png"}
+          title={"Warning"}
+          parragraph={"Are you sure that do you want to delete this user?"}
+          setIsModalDeleteUser={setIsModalDeleteUser}
+          isModalDeleteUser={isModalDeleteUser}
+          handleDelete={handleDelete}
+          setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
+          setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
+          setIsCreateEmptyError={setIsCreateEmptyError}
+        />
+      </section>
 
-      {isModalConfirmUpdateUser && (
-        <section className="fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4">
-          <ConfirmModalUser
-            image={"/images/warning.png"}
-            title={"Warning"}
-            parragraph={"Are you sure do you want to update this user?"}
-            setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
-            isModalConfirmUpdateUser={isModalConfirmUpdateUser}
-            setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
-            setIsModalDeleteUser={setIsModalDeleteUser}
-            setConfirmUpdateUser={setConfirmUpdateUser}
-            handleConfirmUpdateUser={handleConfirmUpdateUser}
-            setIsCreateEmptyError={setIsCreateEmptyError}
-          />
-        </section>
-      )}
+      <section
+        className={`fixed top-0 left-0 min-h-screen w-full backdrop-blur-sm flex justify-center items-center p-4 ${
+          isModalConfirmUpdateUser ? "scale-100" : "scale-0"
+        } transition-transform duration-300`}
+      >
+        <ConfirmModalUser
+          image={"/images/warning.png"}
+          title={"Warning"}
+          parragraph={"Are you sure that do you want to update this user?"}
+          setIsModalConfirmUpdateUser={setIsModalConfirmUpdateUser}
+          isModalConfirmUpdateUser={isModalConfirmUpdateUser}
+          setIsModalConfirmCreateUser={setIsModalConfirmCreateUser}
+          setIsModalDeleteUser={setIsModalDeleteUser}
+          setConfirmUpdateUser={setConfirmUpdateUser}
+          handleConfirmUpdateUser={handleConfirmUpdateUser}
+          setIsCreateEmptyError={setIsCreateEmptyError}
+        />
+      </section>
     </main>
   );
 }
