@@ -37,7 +37,7 @@ const UserForm = ({
       className="grid gap-4 bg-dark-100 p-6 rounded-xl w-full relative max-w-[500px]"
       onSubmit={handleSubmit(submit)}
     >
-      <button
+      <button type="button"
         className="flex absolute bg-accent-100 text-dark-100 font-bold h-6 aspect-square rounded-full justify-center items-center right-2 top-2"
         onClick={() => {
           setIsShowModalCreateUser(false);
